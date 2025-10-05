@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog — NGOKit</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='12' ry='12' width='64' height='64' fill='%231E90FF'/%3E%3Cpath d='M18 24h28v4H18zm0 12h20v4H18z' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="description" content="NGOKit — منصة غير ربحية تقدم أدوات مجانية للجميع.">
+<link rel="canonical" href="https://ngokit.org/">
+<meta property="og:title" content="NGOKit — Free NGO Tools">
+<meta property="og:description" content="Non-profit platform delivering simple, fast tools for everyone.">
+<meta property="og:image" content="https://ngokit.org/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ar" href="https://ngokit.org/ar/">
+<link rel="alternate" hreflang="en" href="https://ngokit.org/en/">
+<link rel="alternate" hreflang="es" href="https://ngokit.org/es/">
+<link rel="alternate" hreflang="pt" href="https://ngokit.org/pt/">
+<link rel="alternate" hreflang="fr" href="https://ngokit.org/fr/">
+<link rel="alternate" hreflang="de" href="https://ngokit.org/de/">
+</head>
+<body>
+<header>
+  <div class="navbar container">
+    <div class="brand"><span class="logo"></span><span id="siteName">NGOKit</span></div>
+    <div class="controls">
+      <div class="social" aria-label="social">
+        <a href="#" title="X"><span>𝕏</span></a>
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="YouTube">YT</a>
+        <a href="#" title="LinkedIn">in</a>
+      </div>
+      <select id="lang" aria-label="language">
+        <option value="ar">العربية 🇸🇦</option>
+        <option value="en">English 🇺🇸</option>
+        <option value="es">Español 🇪🇸</option>
+        <option value="pt">Português 🇵🇹/🇧🇷</option>
+        <option value="fr">Français 🇫🇷</option>
+        <option value="de">Deutsch 🇩🇪</option>
+      </select>
+      <button id="theme" aria-label="toggle theme">🌙</button>
+      <button id="menuBtn" aria-label="open menu">☰</button>
+    </div>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <div class="menu">
+    <h3 data-i18n data-i18n-ar="القائمة" data-i18n-en="Menu">القائمة</h3>
+    <a href="index.html" data-i18n data-i18n-ar="الرئيسية" data-i18n-en="Home">الرئيسية</a>
+    <a href="about.html" data-i18n data-i18n-ar="من نحن" data-i18n-en="About">من نحن</a>
+    <a href="blog.html" data-i18n data-i18n-ar="المدونة" data-i18n-en="Blog">المدونة</a>
+    <h4 data-i18n data-i18n-ar="الأدوات" data-i18n-en="Tools">الأدوات</h4>
+    <div class="sub">
+      <strong data-i18n data-i18n-ar="ملفات" data-i18n-en="Files">ملفات</strong>
+      <a href="pdf-tools.html">PDF Tools</a>
+      <a href="ocr.html">OCR</a>
+      <a href="pdf-watermark.html">PDF Watermark</a>
+    </div>
+    <div class="sub">
+      <strong data-i18n data-i18n-ar="صور" data-i18n-en="Images">صور</strong>
+      <a href="image-converter.html">Image Converter</a>
+      <a href="bg-remover.html">Background Remover</a>
+      <a href="exif-viewer.html">EXIF Viewer</a>
+    </div>
+    <div class="sub">
+      <strong data-i18n data-i18n-ar="نصوص" data-i18n-en="Text">نصوص</strong>
+      <a href="text-tools.html">Text Tools</a>
+      <a href="summarizer.html">Summarizer</a>
+      <a href="readability.html">Readability</a>
+    </div>
+    <div class="sub">
+      <strong data-i18n data-i18n-ar="روابط" data-i18n-en="Links">روابط</strong>
+      <a href="shortener.html">URL Shortener</a>
+      <a href="sitemap.html">Sitemap Generator</a>
+    </div>
+    <div class="sub">
+      <strong data-i18n data-i18n-ar="حسابات" data-i18n-en="Utilities">حسابات</strong>
+      <a href="currency.html">Currency Converter</a>
+      <a href="age-date.html">Age / Date</a>
+      <a href="timezone.html">Timezone</a>
+    </div>
+    <a href="donate.html" data-i18n data-i18n-ar="تبرع" data-i18n-en="Donate">تبرع</a>
+    <a href="contact.html" data-i18n data-i18n-ar="اتصل بنا" data-i18n-en="Contact">اتصل بنا</a>
+    <a href="privacy.html" data-i18n data-i18n-ar="الخصوصية" data-i18n-en="Privacy">الخصوصية</a>
+    <a href="terms.html" data-i18n data-i18n-ar="الشروط" data-i18n-en="Terms">الشروط</a>
+  </div>
+</div>
+<div class="overlay" id="overlay"></div>
+<main class="container">
+<h1 data-i18n data-i18n-ar='المدونة' data-i18n-en='Blog'>المدونة</h1>
+</main>
+<footer>
+  <div class="container foot">
+    <div class="links">
+      <a href="index.html" data-i18n data-i18n-ar="الرئيسية" data-i18n-en="Home">الرئيسية</a> ·
+      <a href="tools.html" data-i18n data-i18n-ar="الأدوات" data-i18n-en="Tools">الأدوات</a> ·
+      <a href="blog.html" data-i18n data-i18n-ar="المدونة" data-i18n-en="Blog">المدونة</a> ·
+      <a href="donate.html" data-i18n data-i18n-ar="تبرع" data-i18n-en="Donate">تبرع</a> ·
+      <a href="contact.html" data-i18n data-i18n-ar="اتصل بنا" data-i18n-en="Contact">اتصل بنا</a> ·
+      <a href="privacy.html" data-i18n data-i18n-ar="الخصوصية" data-i18n-en="Privacy">الخصوصية</a> ·
+      <a href="terms.html" data-i18n data-i18n-ar="الشروط" data-i18n-en="Terms">الشروط</a>
+    </div>
+    <div class="copy" id="copy"></div>
+  </div>
+</footer>
+<div id="cookie" class="cookie" role="dialog" aria-live="polite">
+  <div class="row">
+    <div data-i18n data-i18n-ar="نستخدم ملفات تعريف الارتباط لتحسين تجربتك." data-i18n-en="We use cookies to improve your experience.">
+      نستخدم ملفات تعريف الارتباط لتحسين تجربتك.
+    </div>
+    <button class="btn btn-primary" onclick="acceptCookies()" data-i18n data-i18n-ar="موافق" data-i18n-en="Accept">موافق</button>
+  </div>
+</div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
