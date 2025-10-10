@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NGO clean toolkit site – bilingual, fast, and compliant." />
+  <title data-i18n="site_title">منظمة غير ربحية</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="assets/js/lang.js"></script>
+  <script defer src="assets/js/theme.js"></script>
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <span class="logo">NGO</span>
+      <a href="index.html" class="sitename" data-i18n="site_title">منظمة غير ربحية</a>
+    </div>
+    <nav class="nav">
+      <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+      <a href="about.html" data-i18n="nav_about">من نحن</a>
+      <a href="tools.html" data-i18n="nav_tools">الأدوات</a>
+      <a href="blog.html" data-i18n="nav_blog">المدونة</a>
+      <a href="donate.html" data-i18n="nav_donate" class="btn donate">تبرّع</a>
+      <a href="contact.html" data-i18n="nav_contact" class="btn">تواصل</a>
+    </nav>
+    <div class="controls">
+      <button id="toggleTheme" class="btn small" data-i18n="toggle_theme">وضع ليلي</button>
+      <select id="langSwitcher" class="select">
+        <option value="ar">العربية 🇸🇦</option>
+        <option value="en">English 🇺🇸</option>
+      </select>
+    </div>
+  </header>
+  <main class="container content">
+
+<section class="page">
+  <h1 data-i18n="about_title">من نحن</h1>
+  <p data-i18n="about_p1">نحن مبادرة مجتمعية غير ربحية تُنشئ أدوات رقمية مفتوحة المصدر للتعليم والدعم.</p>
+  <p data-i18n="about_p2">نلتزم بالشفافية، الخصوصية، والتأثير الإيجابي القابل للقياس.</p>
+</section>
+
+  </main>
+  <footer class="container footer">
+    <p>&copy; <span id="year"></span> <span data-i18n="site_title">NGO</span>. <a href="privacy.html" data-i18n="nav_privacy">الخصوصية</a> • <a href="terms.html" data-i18n="nav_terms">الشروط</a></p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
