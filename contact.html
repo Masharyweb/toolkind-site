@@ -1,34 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>اتصل بنا - ToolKind</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ToolKind NGO</title>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="icon" href="assets/img/favicon.png" />
+
 </head>
 <body>
-  <header>
-    <h1>اتصل بنا</h1>
-  </header>
+<header class="container">
+  <div class="nav">
+    <a class="brand" href="index.html">ToolKind</a>
+    <nav>
+      <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+      <a href="about.html" data-i18n="nav_about">من نحن</a>
+      <a href="tools.html" data-i18n="nav_tools">الأدوات</a>
+      <a href="blog.html" data-i18n="nav_blog">المدونة</a>
+      <a href="donate.html" class="btn" data-i18n="nav_donate">تبرّع</a>
+      <a href="contact.html" data-i18n="nav_contact">اتصل بنا</a>
+    </nav>
+    <div class="toggles">
+      <button id="themeToggle" aria-label="Toggle theme">🌓</button>
+      <select id="langSelect" aria-label="Language">
+        <option value="ar">AR</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+  </div>
+</header>
 
-  <main>
-    <form class="contact-form">
-      <label>الاسم:</label>
-      <input type="text" placeholder="اكتب اسمك" required>
+<main class="container"><h1 data-i18n="contact_h1">اتصل بنا</h1>
+<form class="contact" onsubmit="sendContact(event)">
+  <label data-i18n="contact_name">الاسم</label>
+  <input name="name" required />
+  <label data-i18n="contact_email">البريد الإلكتروني</label>
+  <input type="email" name="email" required />
+  <label data-i18n="contact_msg">رسالتك</label>
+  <textarea name="message" rows="5" required></textarea>
+  <button class="btn" type="submit" data-i18n="contact_send">إرسال</button>
+</form>
+</main>
+<footer class="container footer">
+  <div class="grid-3">
+    <div>
+      <h4 data-i18n="footer_about_h">عن ToolKind</h4>
+      <p data-i18n="footer_about_p">منصة غير ربحية تقدّم أدوات رقمية مجانية تخدم المجتمع.</p>
+    </div>
+    <div>
+      <h4 data-i18n="footer_links_h">روابط</h4>
+      <ul>
+        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+        <li><a href="terms.html" data-i18n="footer_terms">شروط الاستخدام</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="footer_news_h">النشرة البريدية</h4>
+      <form onsubmit="subscribe(event)">
+        <input type="email" placeholder="you@email.com" required />
+        <button type="submit" data-i18n="footer_subscribe">اشترك</button>
+      </form>
+    </div>
+  </div>
+  <p class="copyright">© <span id="year"></span> ToolKind NGO</p>
+</footer>
+<script src="assets/js/script.js"></script>
 
-      <label>البريد الإلكتروني:</label>
-      <input type="email" placeholder="example@mail.com" required>
-
-      <label>الرسالة:</label>
-      <textarea placeholder="اكتب رسالتك..." required></textarea>
-
-      <button type="submit">إرسال</button>
-    </form>
-    <a href="index.html" class="btn">رجوع</a>
-  </main>
-
-  <footer>
-    <p>© 2025 ToolKind</p>
-  </footer>
 </body>
 </html>

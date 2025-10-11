@@ -1,15 +1,17 @@
-# NGOKit — NGO Clean Starter (HTML/CSS/JS)
-- Multilingual scaffold (ar/en/es/pt/fr/de) with RTL support
-- Dark/Light mode, sidebar categories, social icons in header
-- SEO essentials: meta/OG/Twitter, hreflang, robots.txt, sitemap.xml
-- Cookie notice included
-- Tool pages placeholders ready to wire
+# ToolKind NGO — v1.6
 
-## Deploy
-- Drag & drop to Netlify / Vercel / Cloudflare Pages
-- Or serve via Go on Google Cloud Run
+نسخة نظيفة وخفيفة متعددة الصفحات (AR/EN) مع تبديل الثيم، جاهزة للنشر على GitHub Pages أو Vercel.
 
-## Next
-- Replace NGOKit with your brand name
-- Update social links and add real tool logic
-- Add og-image.png
+## البنية
+- index.html, about.html, tools.html, donate.html, contact.html, privacy.html, terms.html, blog.html
+- assets/css/style.css
+- assets/js/script.js
+- assets/img/favicon.png
+
+## النشر السريع (Vercel)
+1) vercel init ثم vercel deploy
+2) أو اربط الريبو من GitHub واضغط Deploy
+
+## النشر (GitHub Pages)
+- ضع الملفات في الفرع `main`
+- من Settings > Pages اختر المصدر من `root`
