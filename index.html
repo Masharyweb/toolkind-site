@@ -1,71 +1,70 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8" />
+<head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ToolKind NGO</title>
+<title>NGOKit — أدوات مجانية للجميع</title>
+<link rel="icon" href="assets/img/logo.png" />
 <link rel="stylesheet" href="assets/css/style.css" />
-<link rel="icon" href="assets/img/favicon.png" />
-
 </head>
 <body>
-<header class="container">
-  <div class="nav">
-    <a class="brand" href="index.html">ToolKind</a>
-    <nav>
-      <a href="index.html" data-i18n="nav_home">الرئيسية</a>
-      <a href="about.html" data-i18n="nav_about">من نحن</a>
-      <a href="tools.html" data-i18n="nav_tools">الأدوات</a>
-      <a href="blog.html" data-i18n="nav_blog">المدونة</a>
-      <a href="donate.html" class="btn" data-i18n="nav_donate">تبرّع</a>
-      <a href="contact.html" data-i18n="nav_contact">اتصل بنا</a>
-    </nav>
-    <div class="toggles">
-      <button id="themeToggle" aria-label="Toggle theme">🌓</button>
-      <select id="langSelect" aria-label="Language">
-        <option value="ar">AR</option>
-        <option value="en">EN</option>
-      </select>
-    </div>
-  </div>
+<header class="topbar">
+  <div class="left"><button id="menuBtn" aria-label="القائمة">☰</button></div>
+  <div class="brand"><img src="assets/img/logo.png" alt="NGO logo"/><span>NGOKit</span></div>
+  <div class="right"><button id="themeBtn" aria-label="الوضع">🌙</button></div>
 </header>
+<aside id="drawer" class="drawer">
+  <div class="drawer-header">
+    <img src="assets/img/logo.png" alt="logo"/><span>NGOKit</span>
+    <button id="closeDrawer" aria-label="إغلاق">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="tools.html">الأدوات</a>
+    <a href="blog.html">المدونة</a>
+    <a href="about.html">من نحن</a>
+    <a href="donate.html">تبرّع</a>
+    <a href="contact.html">اتصل بنا</a>
+    <hr/>
+    <a href="privacy.html">سياسة الخصوصية</a>
+    <a href="terms.html">شروط الاستخدام</a>
+  </nav>
+  <div class="drawer-footer">
+    <span>اللغة</span>
+    <div class="langs"><button class="active">العربية</button></div>
+    <div class="socials">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Twitter">x</a>
+      <a href="#" aria-label="GitHub">⌂</a>
+    </div>
+  </div>
+</aside>
+<div id="overlay"></div>
 
-<main class="container"><section class="hero">
-  <h1 data-i18n="home_h1">منصة أدوات غير ربحية لخدمة المجتمع</h1>
-  <p data-i18n="home_p">نجمع أدوات بسيطة ومفيدة وسريعة — بدون تتبع وبدون إعلانات مزعجة.</p>
-  <div class="cta">
-    <a class="btn" href="tools.html" data-i18n="home_cta_tools">استعرض الأدوات</a>
-    <a class="btn ghost" href="donate.html" data-i18n="home_cta_donate">ادعمنا</a>
+<main class="container">
+<section class="hero">
+  <div class="hero-inner">
+    <h1>مرحباً بكم في NGOKit —<br/> أدوات مجانية للجميع</h1>
+    <p>نحن مبادرة غير ربحية تهدف إلى جعل التكنولوجيا في متناول الجميع. في عالم ترتفع فيه التكاليف، نؤمن بأن الوصول إلى الأدوات الرقمية الأساسية حق للجميع.</p>
+    <a class="btn" href="tools.html">ابدأ الآن</a>
   </div>
 </section>
-<section class="features grid-3">
-  <div><h3 data-i18n="f1_h">مجانية بالكامل</h3><p data-i18n="f1_p">كل الأدوات متاحة للجميع بدون مقابل.</p></div>
-  <div><h3 data-i18n="f2_h">سريعة وآمنة</h3><p data-i18n="f2_p">تصميم خفيف وتحميل فائق السرعة.</p></div>
-  <div><h3 data-i18n="f3_h">مفتوحة للمجتمع</h3><p data-i18n="f3_p">نستمع لمقترحاتكم ونطوّر باستمرار.</p></div>
+<section class="tools-grid">
+  <h2>الأدوات الشائعة</h2>
+  <div class="grid">
+    <a class="tool" href="tools.html#img-convert"><img src="assets/icons/img-convert.png" alt=""/><span>تحويل الصور</span></a>
+    <a class="tool" href="tools.html#img-compress"><img src="assets/icons/img-compress.png" alt=""/><span>ضغط الصور</span></a>
+    <a class="tool" href="tools.html#qr"><img src="assets/icons/qr.png" alt=""/><span>مولد QR</span></a>
+    <a class="tool" href="tools.html#split"><img src="assets/icons/split.png" alt=""/><span>تقسيم ملفات</span></a>
+    <a class="tool" href="tools.html#units"><img src="assets/icons/units.png" alt=""/><span>محول الوحدات</span></a>
+    <a class="tool" href="tools.html#url"><img src="assets/icons/url.png" alt=""/><span>اختصار الروابط</span></a>
+    <a class="tool" href="tools.html#json"><img src="assets/icons/json.png" alt=""/><span>تنسيق JSON</span></a>
+    <a class="tool" href="tools.html#css"><img src="assets/icons/css.png" alt=""/><span>Minify CSS</span></a>
+  </div>
+  <div class="more"><a href="tools.html">عرض المزيد</a></div>
 </section>
+
 </main>
-<footer class="container footer">
-  <div class="grid-3">
-    <div>
-      <h4 data-i18n="footer_about_h">عن ToolKind</h4>
-      <p data-i18n="footer_about_p">منصة غير ربحية تقدّم أدوات رقمية مجانية تخدم المجتمع.</p>
-    </div>
-    <div>
-      <h4 data-i18n="footer_links_h">روابط</h4>
-      <ul>
-        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
-        <li><a href="terms.html" data-i18n="footer_terms">شروط الاستخدام</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 data-i18n="footer_news_h">النشرة البريدية</h4>
-      <form onsubmit="subscribe(event)">
-        <input type="email" placeholder="you@email.com" required />
-        <button type="submit" data-i18n="footer_subscribe">اشترك</button>
-      </form>
-    </div>
-  </div>
-  <p class="copyright">© <span id="year"></span> ToolKind NGO</p>
+<footer class="footer">
+  <p>© <span id="year"></span> NGOKit — منصة أدوات غير ربحية.</p>
 </footer>
 <script src="assets/js/script.js"></script>
 
