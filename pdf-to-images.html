@@ -1,0 +1,28 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تحويل PDF إلى صور | PDF to Images — NGOKit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<header class="header container"><div class="brand"><a href="../index.html" class="logo" aria-label="Home"></a><span class="name">NGOKit</span></div>
+<div class="actions"><button class="lang lang-ar">AR</button><button class="lang lang-en">EN</button></div></header>
+<main class="container"><section class='kit'>
+<h2 data-i18n='h'></h2><p class='muted' data-i18n='p'></p>
+<div class='row'><label class='drop' for='pdf'><input id='pdf' type='file' accept='application/pdf' hidden><span data-i18n='u'></span></label>
+<select id='fmt' class='select'><option value='image/jpeg'>JPG</option><option value='image/png'>PNG</option></select>
+<button id='go' class='btn' disabled data-i18n='go'></button></div>
+<div id='list' class='preview'></div></section>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js'></script>
+<script>
+const I18N={{h:{{ar:'تحويل PDF إلى صور',en:'PDF to Images'}},p:{{ar:'استخرج صفحات PDF كصور عالية الجودة.',en:'Export PDF pages as high‑quality images.'}},u:{{ar:'اختر ملف PDF',en:'Choose a PDF file'}},go:{{ar:'ابدأ التحويل',en:'Start Conversion'}}}};
+const pdf=$('#pdf'), drop=$('.drop'), go=$('#go'), list=$('#list'), fmt=$('#fmt'); let file;
+drop.addEventListener('click',()=>pdf.click()); drop.addEventListener('dragover', e=>e.preventDefault()); drop.addEventListener('drop', e=>{{e.preventDefault(); pdf.files=e.dataTransfer.files; pdf.dispatchEvent(new Event('change'));}});
+pdf.addEventListener('change', ()=>{{file=pdf.files[0]; go.disabled=!file; list.innerHTML='';}});
+async function run(){{ if(!file) return; const bytes=await file.arrayBuffer(); const doc=await pdfjsLib.getDocument({{data:bytes}}).promise; list.innerHTML='';
+ for(let p=1;p<=doc.numPages;p++){{const page=await doc.getPage(p); const vp=page.getViewport({{scale:2}}); const c=document.createElement('canvas'); c.width=vp.width; c.height=vp.height;
+ await page.render({{canvasContext:c.getContext('2d'), viewport:vp}}).promise; const data=c.toDataURL(fmt.value,.95); const img=new Image(); img.src=data; img.style.display='block'; img.style.margin='10px 0'; img.style.borderRadius='12px'; img.style.border='1px solid #e6eefc';
+ const a=document.createElement('a'); a.href=data; a.download=`page-${p}.${fmt.value.includes('png')?'png':'jpg'}`; a.className='btn ghost'; a.innerText=(LANG==='ar'?'تحميل صفحة ':'Download page ')+p; const wrap=document.createElement('div'); wrap.appendChild(img); wrap.appendChild(a); list.appendChild(wrap);}}
+}
+go.addEventListener('click', run);
+</script></main><footer class="footer container"><div>© 2025 NGOKit</div></footer>
+<script src="../assets/js/shared.js"></script></body></html>

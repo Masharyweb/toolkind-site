@@ -1,0 +1,24 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تحويل النص إلى صورة | Text to Image — NGOKit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<header class="header container"><div class="brand"><a href="../index.html" class="logo" aria-label="Home"></a><span class="name">NGOKit</span></div>
+<div class="actions"><button class="lang lang-ar">AR</button><button class="lang lang-en">EN</button></div></header>
+<main class="container"><section class='kit'>
+<h2 data-i18n='h'></h2><p class='muted' data-i18n='p'></p>
+<textarea id='prompt' rows='4' class='input' data-i18n='ph'></textarea>
+<div class='row'><select id='style' class='select'><option value='real'>واقعي</option><option value='cartoon'>كرتوني</option><option value='sketch'>رسم يدوي</option></select>
+<select id='ratio' class='select'><option value='1'>مربع</option><option value='1.5'>أفقي</option><option value='0.7'>عمودي</option></select>
+<button id='go' class='btn' data-i18n='go'></button></div>
+<div id='prev' class='preview'></div><p class='muted' data-i18n='note'></p></section>
+<script>
+const I18N={{h:{{ar:'تحويل النص إلى صورة',en:'Text to Image'}},p:{{ar:'اكتب وصفك وسيتم توليد صورة توضيحية (نسخة معاينة محلية).',en:'Write a prompt to generate a preview image (local demo).'}},ph:{{ar:'اكتب هنا وصف الصورة...',en:'Type your image prompt here...'}},go:{{ar:'توليد الصورة الآن',en:'Generate Now'}},note:{{ar:'للوضع الاحترافي سنربط مستقبلاً بمحرك AI بعد تزويدنا بمفتاح.',en:'Pro mode will connect to an AI engine with an API key.'}}}};
+const promptEl=$('#prompt'), ratio=$('#ratio'), prev=$('#prev'), go=$('#go');
+function draw(txt){{const r=parseFloat(ratio.value); const w=600,h=Math.round(600*r); const c=document.createElement('canvas'); c.width=w;c.height=h; const ctx=c.getContext('2d');
+const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#7ec8ff'); g.addColorStop(1,'#4ea8ff'); ctx.fillStyle=g; ctx.fillRect(0,0,w,h); ctx.fillStyle='#fff'; ctx.font='bold 22px Tajawal, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+(txt.match(/.{1,24}/g)||['NGOKit']).forEach((ln,i)=>ctx.fillText(ln, w/2, h/2 + (i*28))); return c.toDataURL('image/png');}}
+go.addEventListener('click', ()=>{{const data=draw(promptEl.value.trim()||(LANG==='ar'?'صورة مولدة':'Generated Image')); const img=new Image(); img.src=data; img.style.maxWidth='100%'; img.style.border='1px solid #e6eefc'; img.style.borderRadius='12px'; img.style.display='block'; img.style.margin='10px 0'; prev.innerHTML=''; prev.appendChild(img);}});
+</script></main><footer class="footer container"><div>© 2025 NGOKit</div></footer>
+<script src="../assets/js/shared.js"></script></body></html>

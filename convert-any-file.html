@@ -1,0 +1,29 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تحويل أي ملف إلى صورة | Convert Any File to Image — NGOKit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<header class="header container"><div class="brand"><a href="../index.html" class="logo" aria-label="Home"></a><span class="name">NGOKit</span></div>
+<div class="actions"><button class="lang lang-ar">AR</button><button class="lang lang-en">EN</button></div></header>
+<main class="container"><section class='kit'>
+<h2 data-i18n='h'></h2><p class='muted' data-i18n='p'></p>
+<div class='row'><label class='drop' for='file'><input id='file' type='file' accept='image/*,application/pdf' hidden><span data-i18n='u'></span></label>
+<select id='fmt' class='select'><option value='image/jpeg'>JPG</option><option value='image/png'>PNG</option><option value='image/webp'>WebP</option></select>
+<input id='q' type='range' min='0.2' max='1' step='0.05' value='0.85' class='range'><button class='btn' id='go' disabled data-i18n='go'></button></div>
+<div class='preview hidden' id='prev'><img id='out'></div><a id='dl' class='btn ghost hidden' download data-i18n='dl'></a>
+</section>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js'></script>
+<script>
+const I18N={{h:{{ar:'تحويل أي ملف إلى صورة',en:'Convert Any File to Image'}},p:{{ar:'حوّل PDF أو الصور إلى JPG/PNG/WebP داخل المتصفح لخصوصية أعلى.',en:'Convert PDF or images to JPG/PNG/WebP in-browser for better privacy.'}},u:{{ar:'اسحب الملف هنا أو انقر للاختيار',en:'Drag & drop or click to choose'}},go:{{ar:'ابدأ التحويل',en:'Start Conversion'}},dl:{{ar:'تحميل النتيجة',en:'Download Result'}}}};
+const file=$('#file'), drop=$('.drop'), go=$('#go'), fmt=$('#fmt'), q=$('#q'), prev=$('#prev'), out=$('#out'), dl=$('#dl');
+let selected; drop.addEventListener('click',()=>file.click()); file.addEventListener('change',()=>{{selected=file.files[0]; go.disabled=!selected; prev.classList.add('hidden'); dl.classList.add('hidden');}});
+drop.addEventListener('dragover',e=>e.preventDefault()); drop.addEventListener('drop',e=>{{e.preventDefault(); file.files=e.dataTransfer.files; file.dispatchEvent(new Event('change'));}});
+async function pdfToCanvas(f){{const bytes=await f.arrayBuffer(); const pdf=await pdfjsLib.getDocument({{data:bytes}}).promise; const page=await pdf.getPage(1);
+const vp=page.getViewport({{scale:2}}); const c=document.createElement('canvas'); c.width=vp.width; c.height=vp.height; await page.render({{canvasContext:c.getContext('2d'),viewport:vp}}).promise; return c;}}
+function imgToCanvas(img){{const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight; c.getContext('2d').drawImage(img,0,0); return c;}}
+async function run(){{if(!selected) return; go.disabled=true; go.innerText=(LANG==='ar'?'جار التحويل…':'Converting…'); try{{let canvas; if(selected.type==='application/pdf') canvas=await pdfToCanvas(selected); else {{const img=await fileToImage(selected); canvas=imgToCanvas(img);}}
+const mime=fmt.value; const quality=parseFloat(q.value); const data=canvas.toDataURL(mime,quality); out.src=data; prev.classList.remove('hidden'); const name=(selected.name.replace(/\.[^.]+$/,'')||'image')+(mime.includes('png')?'.png':mime.includes('webp')?'.webp':'.jpg'); dl.href=data; dl.download=name; dl.classList.remove('hidden'); }}catch(e){{alert(e.message);}} go.disabled=false; go.innerText=(LANG==='ar'?'ابدأ التحويل':'Start Conversion');}}
+go.addEventListener('click', run);
+</script></main><footer class="footer container"><div>© 2025 NGOKit</div></footer>
+<script src="../assets/js/shared.js"></script></body></html>

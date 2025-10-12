@@ -1,0 +1,27 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إزالة الخلفية | Remove Background — NGOKit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<header class="header container"><div class="brand"><a href="../index.html" class="logo" aria-label="Home"></a><span class="name">NGOKit</span></div>
+<div class="actions"><button class="lang lang-ar">AR</button><button class="lang lang-en">EN</button></div></header>
+<main class="container"><section class='kit'>
+<h2 data-i18n='h'></h2><p class='muted' data-i18n='p'></p>
+<div class='row'><label class='drop' for='f'><input id='f' type='file' accept='image/*' hidden><span data-i18n='u'></span></label>
+<input id='thr' type='range' min='0' max='255' step='1' value='240' class='range'>
+<button id='go' class='btn' disabled data-i18n='go'></button></div>
+<div id='prev' class='preview hidden'><img id='img'></div><a id='save' class='btn ghost hidden' download data-i18n='dl'></a>
+<p class='muted' data-i18n='note'></p></section>
+<script>
+const I18N={{h:{{ar:'إزالة الخلفية',en:'Remove Background'}},p:{{ar:'إزالة خلفية بيضاء/فاتحة (نسخة خفيفة داخل المتصفح).',en:'Remove white/light backgrounds (lightweight in-browser).'}},u:{{ar:'ارفع صورة بخلفية فاتحة',en:'Upload an image with light background'}},go:{{ar:'إزالة الآن',en:'Remove Now'}},dl:{{ar:'تحميل الصورة (PNG)',en:'Download PNG'}},note:{{ar:'لنتائج احترافية بخلفيات معقدة سنضيف وضع الذكاء الاصطناعي لاحقًا.',en:'For complex backgrounds an AI mode will be added later.'}}}};
+const f=$('#f'), drop=$('.drop'), go=$('#go'), thr=$('#thr'), img=$('#img'), prev=$('#prev'), save=$('#save'); let file;
+drop.addEventListener('click',()=>f.click()); drop.addEventListener('dragover', e=>e.preventDefault()); drop.addEventListener('drop', e=>{{e.preventDefault(); f.files=e.dataTransfer.files; f.dispatchEvent(new Event('change'));}});
+f.addEventListener('change', ()=>{{file=f.files[0]; go.disabled=!file; prev.classList.add('hidden'); save.classList.add('hidden');}});
+async function run(){{ if(!file) return; const pic=await fileToImage(file); const w=pic.naturalWidth, h=pic.naturalHeight; const c=document.createElement('canvas'); c.width=w; c.height=h;
+const ctx=c.getContext('2d'); ctx.drawImage(pic,0,0); const d=ctx.getImageData(0,0,w,h); const t=parseInt(thr.value);
+for(let i=0;i<d.data.length;i+=4){{const r=d.data[i],g=d.data[i+1],b=d.data[i+2]; if(r>t && g>t && b>t) d.data[i+3]=0;}} ctx.putImageData(d,0,0);
+const data=c.toDataURL('image/png'); img.src=data; prev.classList.remove('hidden'); save.href=data; save.download='no-bg.png'; save.classList.remove('hidden'); }}
+go.addEventListener('click', run);
+</script></main><footer class="footer container"><div>© 2025 NGOKit</div></footer>
+<script src="../assets/js/shared.js"></script></body></html>

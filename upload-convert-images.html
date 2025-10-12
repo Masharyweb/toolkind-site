@@ -1,0 +1,24 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إدارة رفع وتحويل الصور | Upload & Convert Images — NGOKit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<header class="header container"><div class="brand"><a href="../index.html" class="logo" aria-label="Home"></a><span class="name">NGOKit</span></div>
+<div class="actions"><button class="lang lang-ar">AR</button><button class="lang lang-en">EN</button></div></header>
+<main class="container"><section class='kit'>
+<h2 data-i18n='h'></h2><p class='muted' data-i18n='p'></p>
+<div class='row'><label class='drop' for='f'><input id='f' type='file' accept='image/*' hidden><span data-i18n='u'></span></label>
+<select id='to' class='select'><option value='image/jpeg'>JPG</option><option value='image/png'>PNG</option><option value='image/webp'>WebP</option><option value='image/bmp'>BMP</option></select>
+<button id='convert' class='btn' disabled data-i18n='go'></button></div>
+<div id='prev' class='preview hidden'><img id='img'></div><a id='save' class='btn ghost hidden' download data-i18n='dl'></a></section>
+<script>
+const I18N={{h:{{ar:'إدارة رفع وتحويل الصور',en:'Upload & Convert Images'}},p:{{ar:'غيّر صيغة الصورة مباشرة داخل المتصفح مع الحفاظ على الجودة.',en:'Change image format in your browser while preserving quality.'}},u:{{ar:'اسحب الصورة أو انقر للاختيار',en:'Drag an image or click to choose'}},go:{{ar:'حوّل الآن',en:'Convert Now'}},dl:{{ar:'تحميل الصورة',en:'Download Image'}}}};
+const f=$('#f'), drop=$('.drop'), btn=$('#convert'), prev=$('#prev'), img=$('#img'), to=$('#to'), save=$('#save');
+let file; drop.addEventListener('click',()=>f.click()); drop.addEventListener('dragover', e=>e.preventDefault()); drop.addEventListener('drop', e=>{{e.preventDefault(); f.files=e.dataTransfer.files; f.dispatchEvent(new Event('change'));}});
+f.addEventListener('change', ()=>{{file=f.files[0]; btn.disabled=!file; prev.classList.add('hidden'); save.classList.add('hidden');}});
+async function run(){{if(!file) return; const pic=await fileToImage(file); const c=document.createElement('canvas'); c.width=pic.naturalWidth; c.height=pic.naturalHeight; c.getContext('2d').drawImage(pic,0,0);
+const data=c.toDataURL(to.value, .92); img.src=data; prev.classList.remove('hidden'); save.href=data; save.download='image'+(to.value.includes('png')?'.png':to.value.includes('webp')?'.webp':'.jpg'); save.classList.remove('hidden');}}
+btn.addEventListener('click', run);
+</script></main><footer class="footer container"><div>© 2025 NGOKit</div></footer>
+<script src="../assets/js/shared.js"></script></body></html>

@@ -1,0 +1,29 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تحويل الفيديو إلى صور | Video to Frames — NGOKit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css"></head><body>
+<header class="header container"><div class="brand"><a href="../index.html" class="logo" aria-label="Home"></a><span class="name">NGOKit</span></div>
+<div class="actions"><button class="lang lang-ar">AR</button><button class="lang lang-en">EN</button></div></header>
+<main class="container"><section class='kit'>
+<h2 data-i18n='h'></h2><p class='muted' data-i18n='p'></p>
+<div class='row'><label class='drop' for='v'><input id='v' type='file' accept='video/*' hidden><span data-i18n='u'></span></label>
+<select id='interval' class='select'><option value='1'>كل 1 ثانية</option><option value='5'>كل 5 ثوانٍ</option><option value='0'>جميع الإطارات (بطيء)</option></select>
+<button id='go' class='btn' disabled data-i18n='go'></button></div><div id='list' class='preview'></div></section>
+<script>
+const I18N={{h:{{ar:'تحويل الفيديو إلى صور',en:'Video to Frames'}},p:{{ar:'استخرج الإطارات بصيغ JPG/PNG داخل المتصفح.',en:'Extract frames to images (JPG/PNG) in your browser.'}},u:{{ar:'اختر ملف فيديو',en:'Choose a video file'}},go:{{ar:'ابدأ التحويل',en:'Start Extraction'}}}};
+const v=$('#v'), drop=$('.drop'), go=$('#go'), list=$('#list'), intervalSel=$('#interval'); let file;
+drop.addEventListener('click',()=>v.click()); drop.addEventListener('dragover', e=>e.preventDefault()); drop.addEventListener('drop', e=>{{e.preventDefault(); v.files=e.dataTransfer.files; v.dispatchEvent(new Event('change'));}});
+v.addEventListener('change', ()=>{{file=v.files[0]; go.disabled=!file; list.innerHTML='';}});
+async function run(){{ if(!file) return; const url=URL.createObjectURL(file); const video=document.createElement('video'); video.src=url; await video.play().catch(()=>{{}}); video.pause();
+await new Promise(res=> video.onloadedmetadata=res); const canvas=document.createElement('canvas'); const ctx=canvas.getContext('2d'); const step=parseFloat(intervalSel.value);
+canvas.width=video.videoWidth; canvas.height=video.videoHeight; const duration=video.duration; list.innerHTML=''; let t=0;
+while(t<=duration){{ video.currentTime=t; await new Promise(res=> video.onseeked=res); ctx.drawImage(video,0,0,canvas.width,canvas.height); const data=canvas.toDataURL('image/jpeg', .9);
+const img=new Image(); img.src=data; img.style.maxWidth='100%'; img.style.display='block'; img.style.margin='10px 0'; img.style.borderRadius='12px'; img.style.border='1px solid #e6eefc';
+const a=document.createElement('a'); a.href=data; a.download=`frame-${Math.round(t*1000)}.jpg`; a.className='btn ghost'; a.innerText=(LANG==='ar'?'تحميل الإطار':'Download frame'); const wrap=document.createElement('div'); wrap.appendChild(img); wrap.appendChild(a); list.appendChild(wrap);
+t += (step===0? 1/30 : step); }}
+URL.revokeObjectURL(url); }}
+go.addEventListener('click', run);
+</script></main><footer class="footer container"><div>© 2025 NGOKit</div></footer>
+<script src="../assets/js/shared.js"></script></body></html>
