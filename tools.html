@@ -1,56 +1,0 @@
-<!doctype html><html lang='ar' dir='rtl'><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>
-<title>NGOKit — Free Tools for Everyone</title><link rel='icon' href='assets/img/logo.png'/>
-<link rel='stylesheet' href='assets/css/style.css'/></head><body><header class='topbar'>
-<button id='menuBtn' aria-label='Menu' class='icon-btn'>☰</button>
-<div class='brand'><img src='assets/img/logo.png' alt='NGO logo'/><span class='brand-name'>NGOKit</span></div>
-<div class='actions'><button id='themeBtn' aria-label='Theme' class='icon-btn'>🌙</button>
-<select id='langSelect' aria-label='Language'><option value='ar'>AR</option><option value='en'>EN</option></select></div></header>
-<aside id='drawer' class='drawer'><div class='drawer-head'><img src='assets/img/logo.png' alt='logo'/><span>NGOKit</span>
-<button id='closeDrawer' aria-label='Close' class='icon-btn'>✕</button></div>
-<nav class='drawer-nav'>
-<a href='index.html' data-i18n='nav_home'>الرئيسية</a>
-<a href='tools.html' data-i18n='nav_tools'>الأدوات</a>
-<a href='blog.html' data-i18n='nav_blog'>المدونة</a>
-<a href='about.html' data-i18n='nav_about'>من نحن</a>
-<a href='donate.html' data-i18n='nav_donate'>تبرّع</a>
-<a href='contact.html' data-i18n='nav_contact'>اتصل بنا</a><hr/>
-<a href='privacy.html' data-i18n='nav_privacy'>سياسة الخصوصية</a>
-<a href='terms.html' data-i18n='nav_terms'>شروط الاستخدام</a>
-<div class='drawer-social'><span>© <span id='year'></span> NGOKit</span></div></nav></aside><div id='overlay'></div><main class='container'><h1 class='page-title' data-i18n='tools_h1'>الأدوات</h1>
-<div class='card' id='img'><h3 data-i18n='ic_h3'>تحويل الصور (PNG ⇄ JPG)</h3>
-<input type='file' id='ic_file' accept='image/*'/><div class='inline'><label>Format</label>
-<select id='ic_fmt'><option value='image/png'>PNG</option><option value='image/jpeg'>JPG</option></select></div>
-<button class='btn' onclick='imageConvert()' data-i18n='btn_convert'>تحويل</button>
-<a id='ic_download' class='btn ghost' download='converted'>تحميل الصورة</a></div>
-<div class='card' id='compress'><h3 data-i18n='cmp_h3'>ضغط الصور (JPG جودة)</h3>
-<input type='file' id='cmp_file' accept='image/*'/><label data-i18n='cmp_quality'>الجودة:</label>
-<input type='range' id='cmp_q' min='0.1' max='1' step='0.1' value='0.7'>
-<button class='btn' onclick='imageCompress()' data-i18n='btn_compress'>ضغط</button>
-<a id='cmp_download' class='btn ghost' download='compressed.jpg'>تحميل الصورة</a></div>
-<div class='card' id='qr'><h3 data-i18n='qr_h3'>مولد QR (محلي)</h3>
-<input id='qr_text' placeholder='https://example.com'/>
-<button class='btn' onclick='qrGenerate()' data-i18n='btn_generate'>توليد</button>
-<canvas id='qr_canvas' width='256' height='256'></canvas></div>
-<div class='card' id='short'><h3 data-i18n='url_h3'>اختصار الروابط (محلي)</h3>
-<input id='url_input' placeholder='https://...'/><button class='btn' onclick='shortenUrl()' data-i18n='btn_shorten'>اختصر</button>
-<input id='url_output' readonly placeholder='الرابط المختصر سيظهر هنا'/></div>
-<div class='card' id='json'><h3 data-i18n='json_h3'>تنسيق JSON</h3>
-<textarea id='json_in' rows='6' placeholder='{"hello":"world"}'></textarea>
-<div class='inline'><button class='btn' onclick='jsonFormat()' data-i18n='btn_format'>تنسيق</button>
-<button class='btn ghost' onclick='jsonMinify()' data-i18n='btn_minify'>تصغير</button></div>
-<textarea id='json_out' rows='6' placeholder='النتيجة هنا'></textarea></div>
-<div class='card' id='css'><h3 data-i18n='css_h3'>تصغير CSS</h3>
-<textarea id='css_in' rows='6' placeholder='/* CSS هنا */'></textarea>
-<button class='btn' onclick='cssMinify()' data-i18n='btn_minify'>تصغير</button>
-<textarea id='css_out' rows='6' placeholder='النتيجة هنا'></textarea></div>
-<div class='card' id='units'><h3 data-i18n='units_h3'>محول الوحدات (طول)</h3>
-<div class='inline'><input id='u_val' type='number' value='1'/>
-<select id='u_from'><option value='m'>متر</option><option value='km'>كيلومتر</option><option value='cm'>سنتيمتر</option></select>
-<span>⇄</span><select id='u_to'><option value='m'>متر</option><option value='km'>كيلومتر</option><option value='cm'>سنتيمتر</option></select>
-<button class='btn' onclick='unitConvert()' data-i18n='btn_convert'>تحويل</button></div>
-<input id='u_out' readonly /></div>
-<div class='card' id='split'><h3 data-i18n='split_h3'>تقسيم ملف نصي</h3>
-<input type='file' id='sp_file' accept='.txt'/><div class='inline'>
-<label data-i18n='split_chars'>عدد الأحرف لكل جزء:</label><input id='sp_size' type='number' value='500'/>
-<button class='btn' onclick='splitFile()' data-i18n='btn_split'>تقسيم</button></div><div id='sp_links'></div></div></main><footer class='footer'><p>© <span id='year2'></span> NGOKit — Free Tools for Everyone</p></footer>
-<script src='assets/js/script.js'></script></body></html>
