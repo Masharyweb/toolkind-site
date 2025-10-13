@@ -1,0 +1,1 @@
+window.i18n={ar:{hero_title:"NGOKit — أدوات مجانية للجميع",hero_desc:"أدوات موثوقة لمعالجة الصور والملفات والفيديو والصوت (AR/EN).",cta:"ابدأ الآن",tools:"الأدوات الشائعة"},en:{hero_title:"NGOKit — Free Tools for Everyone",hero_desc:"Reliable tools for images, files, video and audio (AR/EN).",cta:"Get Started",tools:"Popular Tools"}};
